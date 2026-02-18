@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server"
-import Stripe from "stripe"
-import { stripe } from "@/lib/stripe"
-import { prisma } from "@/lib/prisma"
+import type Stripe from "stripe"
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
+export const dynamic = "force-dynamic"
 
 export async function POST(request: NextRequest) {
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  if (!webhookSecret) {
+    return NextResponse.json({ error: "Missing webhook secret" }, { status: 500 })
+  }
+  const { stripe } = await import("@/lib/stripe")
+  const { prisma } = await import("@/lib/prisma")
+
   const body = await request.text()
   const signature = request.headers.get("stripe-signature")!
 
