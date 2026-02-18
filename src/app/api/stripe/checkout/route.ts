@@ -3,6 +3,8 @@ import { getAuth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { createCheckoutSession, createStripeCustomer, PRICING } from "@/lib/stripe"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(request: NextRequest) {
   try {
     const session = await getAuth()

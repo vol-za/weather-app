@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAuth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 
+export const dynamic = "force-dynamic"
+
 const FREE_SAVED_CITIES_LIMIT = 3
 
 export async function GET() {

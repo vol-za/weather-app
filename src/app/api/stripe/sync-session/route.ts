@@ -3,6 +3,8 @@ import { getAuth } from "@/lib/auth"
 import { syncSubscriptionFromCheckoutSession } from "@/lib/stripe"
 import { prisma } from "@/lib/prisma"
 
+export const dynamic = "force-dynamic"
+
 /**
  * Syncs subscription status from Stripe checkout session to our DB.
  * Called from client when user lands on /pricing/success (backup to server-side sync).

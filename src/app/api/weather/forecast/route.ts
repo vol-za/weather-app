@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAuth } from "@/lib/auth"
 import { getForecast } from "@/lib/weather"
 
+export const dynamic = "force-dynamic"
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const city = searchParams.get("city")

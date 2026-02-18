@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { getExchangeRates, getAllExchangeRates } from "@/lib/currency"
 import { getAuth } from "@/lib/auth"
 
+export const dynamic = "force-dynamic"
+
 export async function GET() {
   try {
     const session = await getAuth()
